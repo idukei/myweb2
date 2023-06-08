@@ -21,12 +21,12 @@ export default async function ProjectsPage() {
 	}, {} as Record<string, number>);
 
 	const featured = allProjects.find(
-		(project) => project.slug === "planetfall",
+		(project) => project.slug === "dex",
 	)!;
-	const top2 = allProjects.find((project) => project.slug === "highstorm")!;
-	const top3 = allProjects.find((project) => project.slug === "envshare")!;
+	const top2 = allProjects.find((project) => project.slug === "NFT")!;
+	const top3 = allProjects.find((project) => project.slug === "ICO_Token")!;
 	const sorted = allProjects
-		.filter((p) => p.published)
+		.filter((p) => p.published)// mdx published:true
 		.filter(
 			(project) =>
 				project.slug !== featured.slug &&
@@ -48,7 +48,7 @@ export default async function ProjectsPage() {
 						Projects
 					</h2>
 					<p className="mt-4 text-zinc-400">
-						Some of the projects are from work and some are on my own time.
+						Projects to practice.
 					</p>
 				</div>
 				<div className="w-full h-px bg-zinc-800" />

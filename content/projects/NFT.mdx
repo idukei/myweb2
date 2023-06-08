@@ -1,0 +1,43 @@
+---
+title: Interchain-NFT
+description: ...
+date: "2023-05-01"
+url: https://github.com/idukei/ERC721-Interchain
+published: true
+  
+---
+
+
+[![](https://highstorm.app/og.png)](https://github.com/idukei/ERC721-Interchain) 
+
+ERC721 Compatibility: The contract inherits from the ERC721Enumerable contract, which is a standard for creating unique, non-fungible tokens that can be enumerated.
+
+Whitelisting: The contract implements a whitelist functionality by utilizing the IWhitelist interface. It ensures that only whitelisted addresses can participate in the presale and mint NFTs.
+
+Presale Functionality: The contract provides a presale period during which whitelisted addresses can mint NFTs. The presaleMint function allows users to mint one NFT per transaction during the presale, subject to certain conditions such as availability and correct payment.
+
+Regular Minting: After the presale period ends, users can mint one NFT per transaction using the mint function. It enforces conditions similar to presale minting, but without the whitelisting requirement.
+
+Pricing and Supply Management: The contract defines the price of each NFT (_price) and sets a maximum number of tokenIds (maxTokenIds) that can be minted. It also keeps track of the total number of tokenIds minted (tokenIds).
+
+Base URI: The contract allows for the setting of a base URI (_baseTokenURI), which is used to compute the URI for each token. The resulting URI is the concatenation of the base URI and the tokenId.
+
+Pausing Functionality: The contract can be paused and unpaused using the setPaused function. When paused, certain functions like minting are disabled.
+
+Withdraw Ether: The contract provides a function (withdraw) that allows the owner to transfer the Ether balance stored in the contract to their address.
+
+Receive and Fallback Functions: The receive and fallback functions are used to receive Ether payments when NFTs are sold or when users send Ether directly to the contract.
+
+-------------------------------------------------
+
+Token721Collateral Inheritance: The contract inherits from the Token721Collateral contract, which provides the functionality for remote transfer of ERC721 tokens.
+
+Wrapped Token: The contract references an existing ERC721 token (wrappedToken) through the IERC721 interface. This allows the contract to interact with the underlying ERC721 token (Boletos.sol) and perform transfers.
+
+Constructor: The constructor takes the address of the ERC721 token (Boletos.sol) and initializes the wrappedToken variable with an instance of the ERC721 token.
+
+Initialization: The contract provides an initialize function that initializes the Hyperlane router. It takes the addresses of the mailbox contract and the interchain gas paymaster contract as parameters.
+
+_transferFromSender Function: This internal function is overridden from the TokenRouter contract. It transfers the specified token (identified by _tokenId) from the sender to the current contract. It uses the transferFrom function of the wrappedToken to perform the transfer.
+
+_transferTo Function: This internal function is overridden from the TokenRouter contract. It transfers the specified token (identified by _tokenId) from the current contract to the specified recipient address (_recipient). It uses the safeTransferFrom function of the wrappedToken to perform the transfer.

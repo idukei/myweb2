@@ -26,7 +26,7 @@ export const Header: React.FC<Props> = ({ project, views }) => {
 	}
 	if (project.url) {
 		links.push({
-			label: "Website",
+			label: "Github Page",
 			href: project.url,
 		});
 	}

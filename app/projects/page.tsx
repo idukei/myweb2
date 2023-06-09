@@ -11,15 +11,7 @@ const redis = Redis.fromEnv();
 
 export const revalidate = 60;
 export default async function ProjectsPage() {
-	const views = (
-		await redis.mget<number[]>(
-			...allProjects.map((p) => ["pageviews", "projects", p.slug].join(":")),
-		)
-	).reduce((acc, v, i) => {
-		acc[allProjects[i].slug] = v ?? 0;
-		return acc;
-	}, {} as Record<string, number>);
-
+	
 	const featured = allProjects.find(
 		(project) => project.slug === "dex",
 	)!;
@@ -71,9 +63,7 @@ export default async function ProjectsPage() {
 									</div>
 									<span className="flex items-center gap-1 text-xs text-zinc-500">
 										<Eye className="w-4 h-4" />{" "}
-										{Intl.NumberFormat("en-US", { notation: "compact" }).format(
-											views[featured.slug] ?? 0,
-										)}
+										
 									</span>
 								</div>
 
@@ -98,7 +88,7 @@ export default async function ProjectsPage() {
 					<div className="flex flex-col w-full gap-8 mx-auto border-t border-gray-900/10 lg:mx-0 lg:border-t-0 ">
 						{[top2, top3].map((project) => (
 							<Card key={project.slug}>
-								<Article project={project} views={views[project.slug] ?? 0} />
+								<Article project={project} />
 							</Card>
 						))}
 					</div>
@@ -111,7 +101,7 @@ export default async function ProjectsPage() {
 							.filter((_, i) => i % 3 === 0)
 							.map((project) => (
 								<Card key={project.slug}>
-									<Article project={project} views={views[project.slug] ?? 0} />
+									<Article project={project} />
 								</Card>
 							))}
 					</div>
@@ -120,7 +110,7 @@ export default async function ProjectsPage() {
 							.filter((_, i) => i % 3 === 1)
 							.map((project) => (
 								<Card key={project.slug}>
-									<Article project={project} views={views[project.slug] ?? 0} />
+									<Article project={project} />
 								</Card>
 							))}
 					</div>
@@ -129,7 +119,7 @@ export default async function ProjectsPage() {
 							.filter((_, i) => i % 3 === 2)
 							.map((project) => (
 								<Card key={project.slug}>
-									<Article project={project} views={views[project.slug] ?? 0} />
+									<Article project={project} />
 								</Card>
 							))}
 					</div>

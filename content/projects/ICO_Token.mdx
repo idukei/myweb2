@@ -1,8 +1,34 @@
 ---
 title: ICO TokenERC20 Interchain
-description: description Soon...
+description: Smart Contracts, Hyperlane, Next, React, web3modal
 url: https://github.com/idukei/ICO-ERC20-Interchain
 published: true
 ---
 
-Soon ...
+## The BoleToken Contract 
+
+Extends the ERC20 token standard from the OpenZeppelin library, its functionality:
+
+Importing Dependencies: The contract imports the ERC20.sol and Ownable.sol contracts from the OpenZeppelin library. Additionally, it imports the IBoletos.sol contract.
+
+Contract Initialization: The contract constructor is called when deploying the contract. It takes the address of a Boletos contract and initializes the BoletosNFT variable.
+
+Contract Variables: The contract defines several state variables:
+
+tokenPrice: It represents the price of one token in ether.
+tokensPerNFT: The number of tokens that will be minted for each NFT.
+maxTotalSupply: The maximum total supply of tokens that can be minted.
+IBoletosNFT: It stores an instance of the IBoletos contract.
+tokenIdsClaimed: A mapping that keeps track of whether a specific token ID has been claimed or not.
+Minting Tokens: The mint function allows users to mint a specified number of tokens by sending the corresponding amount of ether. It verifies the sent ether amount, checks the total supply does not exceed the maximum supply, and calls the internal _mint function from the ERC20 contract to mint the tokens.
+
+Claiming Tokens: The claim function allows token holders to claim additional tokens based on the number of NFTs they own. It checks the balance of Boletos NFTs owned by the sender and loops over them. If a token ID has not been claimed before, it increases the amount. Finally, it mints the calculated amount of tokens by calling the internal _mint function from the ERC20 contract.
+
+Withdraw Ether: The withdraw function allows the contract owner to withdraw any Ether sent to the contract. Only the owner can invoke this function.
+
+Receive and Fallback Functions: The contract includes a receive function that allows the contract to receive Ether when msg.data is empty. Additionally, it includes a fallback function that handles any Ether sent to the contract when msg.data is not empty.
+
+
+## BoletokenInterchain
+
+Contract acts as a wrapper for an ERC721 token, allowing it to be used as collateral for ERC20 tokens. It provides functions to transfer tokens from the sender to the contract and from the contract to a specified recipient. This functionality is used in the context of the Hyperlane protocol, which facilitates interchain communication and token transfers.

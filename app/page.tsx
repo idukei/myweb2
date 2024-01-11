@@ -35,7 +35,7 @@ export default function Home() {
 			<div className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0" />
 			<div className="my-16 text-center animate-fade-in">
 				<h2 className="text-sm font-serif text-zinc-500">
-					Hi, my name is Ivan, I am a Web & Web3 developer, Pentester & Bug Bounty Hunter.
+					------////// .
 				</h2>
 				<h3 className="text-sm font-serif text-zinc-500">
 					 This is my portfolio, built with Vercel, Upstash, Next, Tailwindcss, and React.

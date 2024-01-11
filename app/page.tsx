@@ -28,7 +28,7 @@ export default function Home() {
 				className="absolute inset-0 -z-10 animate-fade-in"
 				quantity={100}
 			/>
-			<h1 className="z-10 font-serif text-4xl duration-1000 text-amber-200 cursor-default text-edge-outline animate-title font-display sm:text-6xl md:text-9xl whitespace-nowrap bg-clip-text ">
+			<h1 className="z-10 font-serif text-4xl duration-1000 text-amber-200 cursor-default text-edge-outline animate-title font-display before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent sm:text-6xl md:text-9xl whitespace-nowrap bg-clip-text ">
 				iduque
 			</h1>
 
